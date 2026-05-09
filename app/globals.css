@@ -1,15 +1,63 @@
+/* ─── Brand Design System ────────────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary palette */
+  --color-primary:       #0b3d2e; /* Deep Emerald */
+  --color-primary-hover: #1a5c4e;
+  --color-primary-dark:  #092d22;
+  --color-gold:          #d4af37; /* Metallic Gold */
+  --color-gold-light:    #e2c044; /* Sun Glow */
+
+  /* Semantic */
+  --color-success: #28a745;
+  --color-error:   #dc3545;
+  --color-warning: #ffc107;
+  --color-info:    #17a2b8;
+
+  /* Neutrals (light mode) */
+  --color-bg:          #f8f9fa;
+  --color-bg-elevated: #ffffff;
+  --color-border:      #e9ecef;
+  --color-text:        #343a40;
+  --color-text-dark:   #212529;
+  --color-text-muted:  #6c757d;
+
+  /* Spacing scale (8pt base) */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-6: 48px;
+  --space-8: 64px;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 12px;
+
+  /* Elevation */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.10);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.10);
+
+  /* Aliases used by body */
+  --background: var(--color-bg);
+  --foreground: var(--color-text);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-bg:          #212529;
+    --color-bg-elevated: #2c3034;
+    --color-border:      #343a40;
+    --color-text:        #f8f9fa;
+    --color-text-dark:   #ffffff;
+    --color-text-muted:  #adb5bd;
+
+    --background: var(--color-bg);
+    --foreground: var(--color-text);
   }
 }
 
+/* ─── Base ───────────────────────────────────────────────────────────────── */
 html {
   height: 100%;
 }
@@ -26,7 +74,7 @@ body {
   flex-direction: column;
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -47,3 +95,4 @@ a {
     color-scheme: dark;
   }
 }
+

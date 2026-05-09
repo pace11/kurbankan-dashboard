@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import { DatePicker, Button } from "antd";
 
 export default function Home() {
   return (
@@ -59,6 +60,8 @@ export default function Home() {
           >
             Documentation
           </a>
+          <DatePicker />
+          <Button type="primary">Primary Button</Button>
         </div>
       </main>
     </div>
