@@ -3,32 +3,17 @@
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Alert, Button, Card, Form, Input, Typography } from "antd";
 import Image from "next/image";
-import { useState } from "react";
+import { useLogin } from "@/hooks/use-auth";
 
 const { Text } = Typography;
 
 interface LoginFormValues {
-  username: string;
+  email: string;
   password: string;
-  remember: boolean;
 }
 
 export default function LoginPage() {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  async function handleSubmit(values: LoginFormValues) {
-    setLoading(true);
-    setError(null);
-    try {
-      // TODO: replace with actual auth call
-      console.log("login values:", values);
-    } catch {
-      setError("Username or password is incorrect. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  }
+  const { mutate: login, isPending, error } = useLogin();
 
   return (
     <Card
@@ -56,13 +41,14 @@ export default function LoginPage() {
           alt="Kurbankan Logo"
           width={160}
           height={160}
+          loading="eager"
         />
         <Text type="secondary">Sign in to your account</Text>
       </div>
 
       {error && (
         <Alert
-          message={error}
+          message={error.message}
           type="error"
           showIcon
           style={{ marginBottom: 24 }}
@@ -71,8 +57,7 @@ export default function LoginPage() {
 
       <Form<LoginFormValues>
         name="login"
-        initialValues={{ remember: true }}
-        onFinish={handleSubmit}
+        onFinish={(values) => login(values)}
         layout="vertical"
         requiredMark={false}
       >
@@ -106,29 +91,12 @@ export default function LoginPage() {
           />
         </Form.Item>
 
-        {/* <Form.Item>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <Form.Item name="remember" valuePropName="checked" noStyle>
-              <Checkbox>Remember me</Checkbox>
-            </Form.Item>
-            <Button type="link" style={{ padding: 0 }}>
-              Forgot password?
-            </Button>
-          </div>
-        </Form.Item> */}
-
         <Form.Item>
           <Button
             type="primary"
             htmlType="submit"
             size="large"
-            loading={loading}
+            loading={isPending}
             block
           >
             Sign In

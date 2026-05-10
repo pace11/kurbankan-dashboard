@@ -77,6 +77,7 @@ export default function MainLayout({
             <Image
               src="/brand.png"
               alt="Kurbankan Logo"
+              loading="eager"
               width={collapsed ? 40 : 160}
               height={collapsed ? 40 : 160}
               style={{ borderRadius: 16, transition: "all 0.2s" }}
