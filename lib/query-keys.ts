@@ -32,4 +32,10 @@ export const queryKeys = {
     list: (params?: Record<string, unknown>) =>
       ["distribution", "list", params] as const,
   },
+  qurbanPeriods: {
+    all: ["qurban-periods"] as const,
+    list: (params?: Record<string, unknown>) =>
+      ["qurban-periods", "list", params] as const,
+    detail: (id: number) => ["qurban-periods", "detail", id] as const,
+  },
 } as const;

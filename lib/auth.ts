@@ -21,3 +21,8 @@ export function getAuthToken(cookieString: string): string | undefined {
   if (!match) return undefined;
   return decodeURIComponent(match.slice(AUTH_COOKIE.length + 1));
 }
+
+/** Read auth token on the client side via js-cookie. */
+export function getClientToken(): string | undefined {
+  return Cookies.get(AUTH_COOKIE);
+}
