@@ -34,6 +34,15 @@ export default function Providers({ children }: ProvidersProps) {
             colorPrimaryHover: "#1A5C4E",
             colorPrimaryActive: "#092D22",
           },
+          Layout: {
+            triggerBg: "#092D22",
+            triggerColor: "#D4AF37",
+            siderBg: "#0B3D2E",
+          },
+          Menu: {
+            darkItemBg: "#0B3D2E",
+            darkPopupBg: "#092D22",
+          },
         },
       }}
     >
